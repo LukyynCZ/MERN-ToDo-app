@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 connectDB();
 
-app.use('/', todoRouter);
+app.use('/api', todoRouter);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
