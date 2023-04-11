@@ -41,6 +41,19 @@ const updateTask = async (req, res) => {
   res.status(200).json(updatedTask);
 };
 
-const deleteTask = async (req, res) => {};
+/**
+ * @route DELETE api/:id
+ * @description delete task
+ * @access public
+ */
+
+const deleteTask = async (req, res) => {
+  const task = await Todo.findById(req.params.id);
+  if (!task) {
+    return res.status(404).json({ error: 'Task not found' });
+  }
+  const taskToDel = await Todo.findByIdAndDelete(req.params.id);
+  res.status(202).json(taskToDel);
+};
 
 module.exports = { getAllTasks, createTask, updateTask, deleteTask };
