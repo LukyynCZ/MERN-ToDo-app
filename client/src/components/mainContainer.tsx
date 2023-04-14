@@ -17,6 +17,7 @@ const MainContainer = () => {
   const [showCreateTask, setShowCreateTask] = useState(false);
   const [showDelTask, setShowDelTask] = useState(false);
   const [allTasks, setTasks] = useState([]);
+  const [taskId, setTaskId] = useState(0);
 
   const fetchTasks = async () => {
     await axios.get('http://localhost:5000/api').then((res) => {
@@ -28,14 +29,19 @@ const MainContainer = () => {
     fetchTasks();
   }, []);
 
-  console.log(allTasks);
-
   return (
     <>
       {showCreateTask && (
         <CreateTask hideTask={setShowCreateTask} setTasks={setTasks} allTasks={allTasks} />
       )}
-      {showDelTask && <DeleteTask hideDelTask={setShowDelTask} />}
+      {showDelTask && (
+        <DeleteTask
+          hideDelTask={setShowDelTask}
+          taskId={taskId}
+          allTasks={allTasks}
+          setTasks={setTasks}
+        />
+      )}
 
       <div className='container'>
         <div className='top-section'>
@@ -82,9 +88,10 @@ const MainContainer = () => {
               title={task.title}
               section={task.section}
               time={task.time}
+              id={task._id}
               date={task.date}
               showDelTask={setShowDelTask}
-              showDTask={showDelTask}
+              setTaskId={setTaskId}
             />
           ))}
         </div>

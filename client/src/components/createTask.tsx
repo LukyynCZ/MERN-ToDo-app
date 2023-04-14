@@ -33,7 +33,6 @@ const CreateTask = (props: Props) => {
           date,
           section,
         })
-        .then((response) => console.log(response.data))
         .catch((error) => console.log(error));
       props.setTasks([...props.allTasks, { title, time, date, section }]);
       props.hideTask(false);

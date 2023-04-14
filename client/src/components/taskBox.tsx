@@ -7,12 +7,13 @@ interface TaskBody {
   title: string;
   section: string;
   time: string;
+  id: number;
   date: string;
   showDelTask: any;
-  showDTask: boolean;
+  setTaskId: (arg0: number) => void;
 }
 
-const TaskBox = ({ title, section, date, time, showDelTask, showDTask }: TaskBody) => {
+const TaskBox = ({ title, section, date, time, id, showDelTask, setTaskId }: TaskBody) => {
   return (
     <div className='task-wrapper'>
       <div className='task-wrapper-left'>
@@ -40,7 +41,12 @@ const TaskBox = ({ title, section, date, time, showDelTask, showDTask }: TaskBod
         <div className='edit-btn'>
           <FaEdit size={35} className='edit-btn-icon' />
         </div>
-        <div className='delete-btn' onClick={() => showDelTask(true)}>
+        <div
+          className='delete-btn'
+          onClick={() => {
+            setTaskId(id);
+            showDelTask(true);
+          }}>
           <RiDeleteBin5Fill size={35} className='delete-btn-icon' />
         </div>
       </div>
