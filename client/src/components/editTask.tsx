@@ -11,9 +11,30 @@ interface TaskBody {
   section: string;
   setTasks: (arg0: any) => void;
   allTasks: any;
+  setPersonalTasksCounter: (arg0: number) => void;
+  personalTasksCounter: number;
+  setWorkTasksCounter: (arg0: number) => void;
+  workTasksCounter: number;
+  setSchoolTasksCounter: (arg0: number) => void;
+  schoolTasksCounter: number;
 }
 
-const EditTask = ({ showEdit, title, date, time, section, id, setTasks, allTasks }: TaskBody) => {
+const EditTask = ({
+  showEdit,
+  title,
+  date,
+  time,
+  section,
+  id,
+  setTasks,
+  allTasks,
+  setPersonalTasksCounter,
+  personalTasksCounter,
+  setWorkTasksCounter,
+  workTasksCounter,
+  setSchoolTasksCounter,
+  schoolTasksCounter,
+}: TaskBody) => {
   const [editedTitle, setEditedTitle] = useState('');
   const [editedSection, setSection] = useState('');
   const [editedTime, setTime] = useState('');
@@ -44,6 +65,25 @@ const EditTask = ({ showEdit, title, date, time, section, id, setTasks, allTasks
       .catch((err) => {
         console.log(err);
       });
+    if (newSection === 'PERSONAL') {
+      setPersonalTasksCounter((personalTasksCounter += 1));
+    }
+    if (newSection === 'WORK') {
+      setWorkTasksCounter((workTasksCounter += 1));
+    }
+    if (newSection === 'SCHOOL') {
+      setSchoolTasksCounter((schoolTasksCounter += 1));
+    }
+
+    if (section === 'PERSONAL') {
+      setPersonalTasksCounter((personalTasksCounter -= 1));
+    }
+    if (section === 'WORK') {
+      setWorkTasksCounter((workTasksCounter -= 1));
+    }
+    if (section === 'SCHOOL') {
+      setSchoolTasksCounter((schoolTasksCounter -= 1));
+    }
 
     setEditedTitle('');
     setSection('');

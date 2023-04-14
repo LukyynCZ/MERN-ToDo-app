@@ -18,6 +18,16 @@ interface Props {
 }
 
 const CreateTask = (props: Props) => {
+  const {
+    setPersonalTasksCounter,
+    personalTasksCounter,
+    setWorkTasksCounter,
+    workTasksCounter,
+    setSchoolTasksCounter,
+    schoolTasksCounter,
+    setAllTasksCounter,
+    allTasksCounter,
+  } = props;
   const [title, setTitle] = useState('');
   const [time, setTime] = useState('');
   const [date, setDate] = useState('');
@@ -35,7 +45,18 @@ const CreateTask = (props: Props) => {
           section,
         })
         .catch((error) => console.log(error));
-      props.setTasks([...props.allTasks, { title, time, date, section }]);
+      if (section === 'PERSONAL') {
+        setPersonalTasksCounter(personalTasksCounter + 1);
+      }
+      if (section === 'WORK') {
+        setWorkTasksCounter(workTasksCounter + 1);
+      }
+      if (section === 'SCHOOL') {
+        setSchoolTasksCounter(schoolTasksCounter + 1);
+      }
+      setAllTasksCounter(allTasksCounter + 1);
+
+      props.setTasks([...props.allTasks, { title, section, date, time }]);
       props.hideTask(false);
     }
   };

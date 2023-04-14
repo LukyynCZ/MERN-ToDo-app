@@ -25,9 +25,21 @@ const MainContainer = () => {
   const [taskDate, setTaskDate] = useState('');
   const [taskSection, setTaskSection] = useState('');
 
+  // Tasks counter
+  const [allTasksCounter, setAllTasksCounter] = useState(0);
+  const [personalTasksCounter, setPersonalTasksCounter] = useState(0);
+  const [workTasksCounter, setWorkTasksCounter] = useState(0);
+  const [schoolTasksCounter, setSchoolTasksCounter] = useState(0);
+
   const fetchTasks = async () => {
     await axios.get('http://localhost:5000/api').then((res) => {
       setTasks(res.data);
+      setAllTasksCounter(res.data.length);
+      setPersonalTasksCounter(
+        res.data.filter((task: TaskBody) => task.section === 'PERSONAL').length
+      );
+      setWorkTasksCounter(res.data.filter((task: TaskBody) => task.section === 'WORK').length);
+      setSchoolTasksCounter(res.data.filter((task: TaskBody) => task.section === 'SCHOOL').length);
     });
   };
 
@@ -35,10 +47,23 @@ const MainContainer = () => {
     fetchTasks();
   }, []);
 
+  console.log(allTasks);
   return (
     <>
       {showCreateTask && (
-        <CreateTask hideTask={setShowCreateTask} setTasks={setTasks} allTasks={allTasks} />
+        <CreateTask
+          hideTask={setShowCreateTask}
+          setTasks={setTasks}
+          allTasks={allTasks}
+          setAllTasksCounter={setAllTasksCounter}
+          allTasksCounter={allTasksCounter}
+          setPersonalTasksCounter={setPersonalTasksCounter}
+          personalTasksCounter={personalTasksCounter}
+          setWorkTasksCounter={setWorkTasksCounter}
+          workTasksCounter={workTasksCounter}
+          setSchoolTasksCounter={setSchoolTasksCounter}
+          schoolTasksCounter={schoolTasksCounter}
+        />
       )}
       {showDelTask && (
         <DeleteTask
@@ -46,6 +71,14 @@ const MainContainer = () => {
           taskId={taskId}
           allTasks={allTasks}
           setTasks={setTasks}
+          setAllTasksCounter={setAllTasksCounter}
+          allTasksCounter={allTasksCounter}
+          setPersonalCounter={setPersonalTasksCounter}
+          personalCounter={personalTasksCounter}
+          setWorkCounter={setWorkTasksCounter}
+          workCounter={workTasksCounter}
+          setSchoolCounter={setSchoolTasksCounter}
+          schoolCounter={schoolTasksCounter}
         />
       )}
 
@@ -59,6 +92,12 @@ const MainContainer = () => {
           id={taskId}
           setTasks={setTasks}
           allTasks={allTasks}
+          setPersonalTasksCounter={setPersonalTasksCounter}
+          personalTasksCounter={personalTasksCounter}
+          setWorkTasksCounter={setWorkTasksCounter}
+          workTasksCounter={workTasksCounter}
+          setSchoolTasksCounter={setSchoolTasksCounter}
+          schoolTasksCounter={schoolTasksCounter}
         />
       )}
 
@@ -70,22 +109,22 @@ const MainContainer = () => {
               <div className='tasks-stats-row'>
                 <div className='task-stat-0'></div>
                 <p>ALL TASKS</p>
-                <p>0</p>
+                <p>{allTasksCounter}</p>
               </div>
               <div className='tasks-stats-row'>
                 <div className='task-stat-1'></div>
                 <p>PERSONAL</p>
-                <p>0</p>
+                <p>{personalTasksCounter}</p>
               </div>
               <div className='tasks-stats-row'>
                 <div className='task-stat-2'></div>
                 <p>WORK</p>
-                <p>0</p>
+                <p>{workTasksCounter}</p>
               </div>
               <div className='tasks-stats-row'>
                 <div className='task-stat-3'></div>
                 <p>SCHOOL</p>
-                <p>0</p>
+                <p>{schoolTasksCounter}</p>
               </div>
             </div>
           </div>

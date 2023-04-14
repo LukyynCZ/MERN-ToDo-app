@@ -74,8 +74,12 @@
   width: 100%;
   margin-bottom: 10px;
 }
+.radio-vyber > input {
+  cursor: pointer;
+}
 
 .radio-vyber label {
-  margin-left: 10px;
+  cursor: pointer;
+  padding-left: 10px;
   font-size: 1.3em;
 }
