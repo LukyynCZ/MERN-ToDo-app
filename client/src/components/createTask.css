@@ -1,0 +1,75 @@
+.createTaskSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.createTaskWrapper {
+  margin: auto;
+  max-width: 800px;
+  background-color: rgba(239, 239, 239, 0.5);
+  padding: 20px;
+  border-radius: 15px;
+  position: absolute;
+  top: 150px;
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  backdrop-filter: blur(20px);
+}
+
+.inputs {
+  display: flex;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.inputs input {
+  border: 0;
+  padding: 10px;
+  outline: none;
+  border-radius: 10px;
+}
+
+.btn-position {
+  display: flex;
+  align-items: center;
+}
+
+.taskInput {
+  margin-right: 10px;
+  flex: 1;
+}
+
+.timeInput {
+  margin-right: 10px;
+}
+
+.exit-btn {
+  margin-left: 10px;
+  cursor: pointer;
+  color: white;
+  transition: 0.15s;
+  background-color: red;
+  border-radius: 10px;
+}
+
+.exit-btn:hover {
+  color: rgb(255, 196, 196);
+}
+
+.radio-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.radio-vyber label {
+  margin-left: 10px;
+  font-size: 1.3em;
+}

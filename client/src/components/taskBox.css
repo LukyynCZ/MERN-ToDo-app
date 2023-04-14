@@ -1,0 +1,92 @@
+.SECTION-div {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  margin-right: 10px;
+}
+
+.PERSONAL-div {
+  background: rgb(0, 151, 178);
+  background: linear-gradient(90deg, rgba(0, 151, 178, 1) 0%, rgba(126, 217, 87, 1) 100%);
+}
+
+.WORK-div {
+  background: rgb(140, 82, 255);
+  background: linear-gradient(90deg, rgba(140, 82, 255, 1) 0%, rgba(92, 225, 230, 1) 100%);
+}
+
+.SCHOOL-div {
+  background: rgb(255, 102, 196);
+  background: linear-gradient(90deg, rgba(255, 102, 196, 1) 0%, rgba(255, 222, 89, 1) 100%);
+}
+
+.task-header-div {
+  display: flex;
+  align-items: center;
+}
+
+.complete-btn {
+  width: 35px;
+  height: 35px;
+  background-color: white;
+  border: 5px solid gray;
+  border-radius: 100%;
+  margin-left: 15px;
+  margin-right: 15px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.complete-btn:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+.task-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.task-buttons {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.task-wrapper-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.date-icon-div,
+.time-icon-div {
+  display: flex;
+  align-items: center;
+}
+
+.date-icon,
+.time-icon {
+  margin-right: 10px;
+}
+
+.edit-btn {
+  margin-right: 10px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.edit-btn:hover {
+  color: rgb(0, 78, 141);
+}
+
+.delete-btn-icon {
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.delete-btn-icon:hover {
+  color: rgb(161, 0, 0);
+}
