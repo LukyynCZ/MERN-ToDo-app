@@ -1,13 +1,6 @@
-.createTaskSection {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: end;
-}
-
 .createTaskWrapper {
-  margin: auto;
   max-width: 800px;
+  margin: auto;
   background-color: rgba(239, 239, 239, 0.5);
   padding: 20px;
   border-radius: 15px;
@@ -15,10 +8,23 @@
   top: 150px;
   bottom: 0;
   width: 100%;
-  position: absolute;
   left: 50%;
   transform: translateX(-50%);
   backdrop-filter: blur(20px);
+}
+
+.createTaskSection {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.createTaskText {
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .inputs {

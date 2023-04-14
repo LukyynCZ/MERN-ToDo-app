@@ -11,9 +11,27 @@ interface TaskBody {
   date: string;
   showDelTask: any;
   setTaskId: (arg0: number) => void;
+  showEdit: (arg0: boolean) => void;
+  setTaskTitle: (arg0: string) => void;
+  setTaskTime: (arg0: string) => void;
+  setTaskDate: (arg0: string) => void;
+  setTaskSection: (arg0: string) => void;
 }
 
-const TaskBox = ({ title, section, date, time, id, showDelTask, setTaskId }: TaskBody) => {
+const TaskBox = ({
+  title,
+  section,
+  date,
+  time,
+  id,
+  showDelTask,
+  setTaskId,
+  setTaskTitle,
+  showEdit,
+  setTaskTime,
+  setTaskDate,
+  setTaskSection,
+}: TaskBody) => {
   return (
     <div className='task-wrapper'>
       <div className='task-wrapper-left'>
@@ -38,7 +56,16 @@ const TaskBox = ({ title, section, date, time, id, showDelTask, setTaskId }: Tas
         </div>
       </div>
       <div className='task-buttons'>
-        <div className='edit-btn'>
+        <div
+          className='edit-btn'
+          onClick={() => {
+            setTaskId(id);
+            setTaskTitle(title);
+            setTaskTime(time);
+            setTaskDate(date);
+            setTaskSection(section);
+            showEdit(true);
+          }}>
           <FaEdit size={35} className='edit-btn-icon' />
         </div>
         <div

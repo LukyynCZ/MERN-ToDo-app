@@ -4,6 +4,7 @@ import CreateTask from './createTask';
 import axios from 'axios';
 import TaskBox from './taskBox';
 import DeleteTask from './deleteTask';
+import EditTask from './editTask';
 
 interface TaskBody {
   title: string;
@@ -16,8 +17,13 @@ interface TaskBody {
 const MainContainer = () => {
   const [showCreateTask, setShowCreateTask] = useState(false);
   const [showDelTask, setShowDelTask] = useState(false);
+  const [showEditTask, setShowEditTask] = useState(false);
   const [allTasks, setTasks] = useState([]);
   const [taskId, setTaskId] = useState(0);
+  const [taskTitle, setTaskTitle] = useState('');
+  const [taskTime, setTaskTime] = useState('');
+  const [taskDate, setTaskDate] = useState('');
+  const [taskSection, setTaskSection] = useState('');
 
   const fetchTasks = async () => {
     await axios.get('http://localhost:5000/api').then((res) => {
@@ -40,6 +46,19 @@ const MainContainer = () => {
           taskId={taskId}
           allTasks={allTasks}
           setTasks={setTasks}
+        />
+      )}
+
+      {showEditTask && (
+        <EditTask
+          showEdit={setShowEditTask}
+          time={taskTime}
+          date={taskDate}
+          section={taskSection}
+          title={taskTitle}
+          id={taskId}
+          setTasks={setTasks}
+          allTasks={allTasks}
         />
       )}
 
@@ -90,8 +109,13 @@ const MainContainer = () => {
               time={task.time}
               id={task._id}
               date={task.date}
+              showEdit={setShowEditTask}
               showDelTask={setShowDelTask}
               setTaskId={setTaskId}
+              setTaskTitle={setTaskTitle}
+              setTaskTime={setTaskTime}
+              setTaskDate={setTaskDate}
+              setTaskSection={setTaskSection}
             />
           ))}
         </div>

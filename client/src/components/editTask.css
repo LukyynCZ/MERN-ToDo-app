@@ -1,0 +1,103 @@
+.editTaskWrapper {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.editTaskBody {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(255, 253, 253);
+  width: 80vw;
+  max-width: 850px;
+  height: fit-content;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 15px;
+  border-radius: 10px;
+}
+
+.editTaskBody > p {
+  margin-bottom: 10px;
+}
+
+.inputsEdit {
+  display: flex;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.inputsEdit > input {
+  border: 0;
+  padding: 10px;
+  outline: none;
+  border-radius: 10px;
+  background-color: rgba(236, 236, 236, 0.6);
+}
+
+.inputsEdit > input:nth-child(1) {
+  flex: 1;
+  margin-right: 10px;
+}
+.inputsEdit > input:nth-child(2) {
+  margin-right: 10px;
+}
+
+.radio-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+.radio-buttons > div {
+  cursor: pointer;
+}
+
+.radio-buttons > div > label {
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.radio-buttons > div > input {
+  cursor: pointer;
+}
+
+.buttonGroupEdit {
+  display: flex;
+  justify-content: end;
+}
+
+.buttonGroupEdit > button {
+  border: 0;
+  padding: 5px 10px;
+  font-size: 1.2em;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.buttonGroupEdit > button:nth-child(1) {
+  background-color: rgb(0, 140, 255);
+  margin-right: 10px;
+}
+
+.buttonGroupEdit > button:nth-child(1):hover {
+  background-color: rgb(0, 89, 255);
+}
+
+.buttonGroupEdit > button:nth-child(2) {
+  background-color: rgb(255, 68, 34);
+  color: aliceblue;
+}
+
+.buttonGroupEdit > button:nth-child(2):hover {
+  background-color: rgb(255, 38, 0);
+}
