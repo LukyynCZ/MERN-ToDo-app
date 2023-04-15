@@ -1,6 +1,6 @@
 # To-do App in MERN Stack
 ## 📄 Project description
-To-do app with beautiful UI/UX developed with MERN Stack
+To-do app with beautiful UI/UX and decent animations in Framer Motion developed with MERN Stack
 
 ## 🚀 Tech stack
 * React
