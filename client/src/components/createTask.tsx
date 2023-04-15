@@ -32,6 +32,7 @@ const CreateTask = (props: Props) => {
   const [time, setTime] = useState('');
   const [date, setDate] = useState('');
   const [section, setSection] = useState('');
+  const [id, setNewId] = useState('');
 
   const handleAddTask = async () => {
     if (!title || !time || !date || !section) {
@@ -43,6 +44,9 @@ const CreateTask = (props: Props) => {
           time,
           date,
           section,
+        })
+        .then((res) => {
+          setNewId(res.data._id);
         })
         .catch((error) => console.log(error));
       if (section === 'PERSONAL') {
@@ -56,7 +60,7 @@ const CreateTask = (props: Props) => {
       }
       setAllTasksCounter(allTasksCounter + 1);
 
-      props.setTasks([...props.allTasks, { title, section, date, time }]);
+      props.setTasks([...props.allTasks, { title, section, date, time, id }]);
       props.hideTask(false);
     }
   };
