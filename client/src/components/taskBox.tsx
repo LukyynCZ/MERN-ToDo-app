@@ -2,6 +2,7 @@ import './taskBox.css';
 import { FaEdit } from 'react-icons/fa';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { BiTimeFive, BiCalendar } from 'react-icons/bi';
+import { useState } from 'react';
 
 interface TaskBody {
   title: string;
@@ -32,15 +33,25 @@ const TaskBox = ({
   setTaskDate,
   setTaskSection,
 }: TaskBody) => {
+  const [taskDone, setTaskDone] = useState(false);
+
   return (
     <div className='task-wrapper'>
       <div className='task-wrapper-left'>
-        <div className='complete-btn'></div>
+        <div
+          className='complete-btn'
+          onClick={() => {
+            setTaskDone(true);
+            setTaskId(id);
+            setTimeout(() => {
+              showDelTask(true);
+            }, 1000);
+          }}></div>
         <div>
           <div>
             <div className='task-header-div'>
               <div className={`SECTION-div ${section}-div`}></div>
-              <p>{title}</p>
+              <p style={{ textDecoration: taskDone ? 'line-through' : 'none' }}>{title}</p>
             </div>
             <div className='task-footer-div'>
               <div className='date-icon-div'>

@@ -47,7 +47,6 @@ const MainContainer = () => {
     fetchTasks();
   }, []);
 
-  console.log(allTasks);
   return (
     <>
       {showCreateTask && (
