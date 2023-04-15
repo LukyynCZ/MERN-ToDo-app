@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import './mainContainer.css';
-import CreateTask from './createTask';
+import CreateTask from '../createTask/createTask';
 import axios from 'axios';
-import TaskBox from './taskBox';
-import DeleteTask from './deleteTask';
-import EditTask from './editTask';
+import TaskBox from '../taskBox/taskBox';
+import DeleteTask from '../deleteTask/deleteTask';
+import EditTask from '../editTask/editTask';
 
 interface TaskBody {
   title: string;
@@ -54,6 +54,8 @@ const MainContainer = () => {
           hideTask={setShowCreateTask}
           setTasks={setTasks}
           allTasks={allTasks}
+          taskId={taskId}
+          setTaskId={setTaskId}
           setAllTasksCounter={setAllTasksCounter}
           allTasksCounter={allTasksCounter}
           setPersonalTasksCounter={setPersonalTasksCounter}

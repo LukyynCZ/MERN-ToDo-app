@@ -51,6 +51,7 @@ export const DeleteTask = ({
     setAllTasksCounter(allTasksCounter - 1);
     setTasks(newTasks);
 
+  
     await axios.delete(`http://localhost:5000/api/${taskId}`).catch((err) => console.log(err));
   };
 

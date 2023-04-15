@@ -54,7 +54,6 @@ const EditTask = ({
         task.date = newDate;
       }
     });
-
     await axios
       .put(`http://localhost:5000/api/${id}`, {
         title: newTitle,

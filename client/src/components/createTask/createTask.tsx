@@ -27,17 +27,19 @@ const CreateTask = (props: Props) => {
     schoolTasksCounter,
     setAllTasksCounter,
     allTasksCounter,
+    setTaskId,
+    taskId,
   } = props;
   const [title, setTitle] = useState('');
   const [time, setTime] = useState('');
   const [date, setDate] = useState('');
   const [section, setSection] = useState('');
-  const [id, setNewId] = useState('');
 
   const handleAddTask = async () => {
     if (!title || !time || !date || !section) {
       alert('All fields are required!');
     } else {
+      let _id = 0;
       await axios
         .post('http://localhost:5000/api', {
           title,
@@ -46,7 +48,8 @@ const CreateTask = (props: Props) => {
           section,
         })
         .then((res) => {
-          setNewId(res.data._id);
+          _id = res.data._id;
+          setTaskId(_id);
         })
         .catch((error) => console.log(error));
       if (section === 'PERSONAL') {
@@ -60,7 +63,7 @@ const CreateTask = (props: Props) => {
       }
       setAllTasksCounter(allTasksCounter + 1);
 
-      props.setTasks([...props.allTasks, { title, section, date, time, id }]);
+      props.setTasks([...props.allTasks, { title, section, date, time, _id }]);
       props.hideTask(false);
     }
   };
